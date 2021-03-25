@@ -10,7 +10,7 @@ logger.addHandler(handler)
 logger.setLevel(logging.INFO)
 
 api = Api(version='1.0.0', title='Book Store API',
-          description='A service that can help you manage your book loan.')
+          description='A service that can help you manage your lending of books.')
 
 
 @api.errorhandler
