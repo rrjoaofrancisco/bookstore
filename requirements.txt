@@ -1,0 +1,7 @@
+flask
+flask-restplus
+Flask-SQLAlchemy
+flask-migrate
+flask-marshmallow
+pytest
+flake8
