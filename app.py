@@ -7,6 +7,8 @@ from database import config_db
 from restplus import api
 from sqlalchemy.orm.exc import NoResultFound
 from apis.book import ns_book
+from apis.client import ns_client
+from models import book, lending, client
 
 
 logger = logging.getLogger(__name__)
@@ -26,6 +28,7 @@ def create_app(app=app, db_url=os.environ.get('DATABASE_DEFAULT_URL')):
     blueprint = Blueprint('api', __name__)
     api.init_app(blueprint)
     api.add_namespace(ns_book)
+    api.add_namespace(ns_client)
     app.register_blueprint(blueprint)
 
     return app

@@ -3,9 +3,7 @@ from flask_restplus import Resource
 from services.book import BookService
 from serializers.book import books_schema
 
-ns_default = api.default_namespace
-
-ns_book = api.namespace('Books', description='Books Management', path='/books')
+ns_book = api.namespace('Books & Reserves', description='Books management and reserves', path='/books')
 
 @ns_book.route('/')
 class Book(Resource):
