@@ -3,5 +3,8 @@ flask-restplus
 Flask-SQLAlchemy
 flask-migrate
 flask-marshmallow
+marshmallow-sqlalchemy
 pytest
 flake8
+python-dotenv
+Werkzeug==0.16.1

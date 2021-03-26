@@ -6,6 +6,7 @@ from flask import Flask, Blueprint
 from database import config_db
 from restplus import api
 from sqlalchemy.orm.exc import NoResultFound
+from apis.book import ns_book
 
 
 logger = logging.getLogger(__name__)
@@ -22,8 +23,9 @@ def create_app(app=app, db_url=os.environ.get('DATABASE_DEFAULT_URL')):
     app.url_map.strict_slashes = False
     config_db(app, db_url)
 
-    blueprint = Blueprint('v1', __name__)
+    blueprint = Blueprint('api', __name__)
     api.init_app(blueprint)
+    api.add_namespace(ns_book)
     app.register_blueprint(blueprint)
 
     return app
