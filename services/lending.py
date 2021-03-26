@@ -1,6 +1,7 @@
 from datetime import datetime
 from database import db
 from models.lending import Lending
+from services.book import BookService
 
 class LendingService(object):
 
@@ -8,7 +9,7 @@ class LendingService(object):
         new_lending = Lending(
             client_id = kwargs.get('client_id'),
             book_id = kwargs.get('book_id'),
-            created_at = datetime.now(),
+            created_at = kwargs.get('created_at'),
             devolution_date = kwargs.get('devolution_date')
         )
         db.session.add(new_lending)
