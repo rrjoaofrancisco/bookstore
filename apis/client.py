@@ -21,7 +21,11 @@ class Lending(Resource):
         self.book_service = BookService()
         self.client_service = ClientService()
 
-    def _apply_fees(self, loan_json, today, dt_devolution, value):
+    def _get_today():
+        return datetime.today()
+
+    def _apply_fees(self, loan_json, dt_devolution, value):
+        today = self._get_today()
         fine = 0.0
         fee = 0.0
         current_value = value
@@ -49,10 +53,9 @@ class Lending(Resource):
         if not client:
             abort(404, 'Client not found.')
         lendings = self.service.get_by_client(id)
-        today = datetime.today()
         response = []
         for loan in lendings:
             loan_json = lending_schema.dump(loan)
-            self._apply_fees(loan_json,today,loan.devolution_date, loan.value)
+            self._apply_fees(loan_json,loan.devolution_date, loan.value)
             response.append(loan_json)
         return response
