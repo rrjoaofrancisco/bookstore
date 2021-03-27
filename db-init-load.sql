@@ -4,9 +4,9 @@
 -- DELETE from client
 
 INSERT INTO book (id, title, avaiable)
-VALUES (1, 'xunda book', 1);
+VALUES (1, 'Os irregulares de baker street', 1);
 INSERT INTO book (id, title, avaiable)
-VALUES (2, 'Livro dos espíritos', 1);
+VALUES (2, 'A menina que roubava livros', 1);
 INSERT INTO book (id, title, avaiable)
 VALUES (3, 'Um lugar ao sol', 1);
 

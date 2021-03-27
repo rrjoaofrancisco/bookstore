@@ -8,6 +8,9 @@ setup:
 	pip install --upgrade pip
 	pip install -r requirements.txt
 
+install-python:
+	pyenv install $(PYTHON_VERSION)
+
 .create-venv:
 	pyenv uninstall -f $(VENV_NAME)
 	pyenv virtualenv $(PYTHON_VERSION) $(VENV_NAME)

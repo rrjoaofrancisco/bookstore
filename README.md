@@ -3,7 +3,7 @@
 This is a service that can help you to manage your book reserves.
 
 ## Requirements
-- Ubuntu 18.04
+- Ubuntu 18.04 (or any other debian based distro)
 - Python 3.6.12
 - sqlite3
 - pyenv
@@ -27,7 +27,12 @@ echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
 exec "$SHELL"
 ```
 
-After that, access the project directory and execute `make create-venv` to recreate the virtual environment.
+After that, access the project directory and execute...
+```bash
+make install-python
+make create-venv
+``` 
+... to install python version and create the virtual environment.
 
 ## Run
 
@@ -35,7 +40,7 @@ For run and access the swagger, execute `make run`. This will start the server o
 
 ## Tests and code convention
 
-First run:
+First export the following env:
 ```bash
 export PYTHONPATH=.
 ```
