@@ -1,5 +1,4 @@
 from database import ma
-from models.lending import Lending
 
 
 class LendingSchema(ma.Schema):
@@ -12,6 +11,7 @@ class LendingSchema(ma.Schema):
             "book_id",
             "value"
         )
-       
+
+
 lending_schema = LendingSchema()
 lendings_schema = LendingSchema(many=True)

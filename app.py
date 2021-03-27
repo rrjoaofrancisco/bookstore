@@ -8,7 +8,6 @@ from restplus import api
 from sqlalchemy.orm.exc import NoResultFound
 from apis.book import ns_book
 from apis.client import ns_client
-from models import book, lending, client
 
 
 logger = logging.getLogger(__name__)

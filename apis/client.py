@@ -1,4 +1,3 @@
-import os
 from datetime import datetime, timedelta
 from flask import abort
 from restplus import api
@@ -56,6 +55,6 @@ class Lending(Resource):
         response = []
         for loan in lendings:
             loan_json = lending_schema.dump(loan)
-            self._apply_fees(loan_json,loan.devolution_date, loan.value)
+            self._apply_fees(loan_json, loan.devolution_date, loan.value)
             response.append(loan_json)
         return response

@@ -12,7 +12,8 @@ from werkzeug.exceptions import BadRequest
 
 reserve_days = os.environ.get('RESERVE_DAYS')
 
-ns_book = api.namespace('Books & Reserves', description='Books management and reserves', path='/books')
+ns_book = api.namespace(
+    'Books & Reserves', description='Books management and reserves', path='/books')
 
 lending = ns_book.model('Lending', {
     'client_id': fields.Integer,
@@ -68,11 +69,11 @@ class BookReserve(Resource):
             reserve_date = _valid_date(json_data['reserve_date'])
             devolution_date = reserve_date + timedelta(self._reserve_days())
 
-            new_loading = self.service.insert(client_id=client.id, 
-                                            book_id=book.id, 
-                                            created_at=reserve_date,
-                                            devolution_date=devolution_date,
-                                            value=json_data['value'])
+            new_loading = self.service.insert(client_id=client.id,
+                                              book_id=book.id,
+                                              created_at=reserve_date,
+                                              devolution_date=devolution_date,
+                                              value=json_data['value'])
 
             book.avaiable = False
             self.book_service.insert(book)

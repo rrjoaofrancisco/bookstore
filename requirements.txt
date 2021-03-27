@@ -12,3 +12,4 @@ pytest
 pytest-flask
 requests-mock
 pytest-mock
+autopep8

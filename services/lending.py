@@ -1,17 +1,16 @@
-from datetime import datetime
 from database import db
 from models.lending import Lending
-from services.book import BookService
+
 
 class LendingService(object):
 
     def insert(self, **kwargs):
         new_lending = Lending(
-            client_id = kwargs.get('client_id'),
-            book_id = kwargs.get('book_id'),
-            created_at = kwargs.get('created_at'),
-            devolution_date = kwargs.get('devolution_date'),
-            value = kwargs.get('value')
+            client_id=kwargs.get('client_id'),
+            book_id=kwargs.get('book_id'),
+            created_at=kwargs.get('created_at'),
+            devolution_date=kwargs.get('devolution_date'),
+            value=kwargs.get('value')
         )
         db.session.add(new_lending)
         db.session.commit()

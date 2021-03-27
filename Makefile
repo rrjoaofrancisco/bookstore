@@ -16,13 +16,10 @@ setup:
 create-venv: .create-venv setup
 
 code-convention:
-	flake8 --max-line-length=120 --ignore=E402
+	flake8 --max-line-length=120 --ignore=E402,F401
 
 test:
 	$(PYTEST)
-
-db-upgrade:
-	flask db upgrade
 
 run:
 	chmod +x run.sh
