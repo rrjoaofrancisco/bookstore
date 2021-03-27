@@ -9,7 +9,8 @@ class LendingSchema(ma.Schema):
             "id",
             "created_at",
             "client_id",
-            "book_id"
+            "book_id",
+            "value"
         )
        
 lending_schema = LendingSchema()

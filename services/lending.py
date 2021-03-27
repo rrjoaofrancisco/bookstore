@@ -10,7 +10,8 @@ class LendingService(object):
             client_id = kwargs.get('client_id'),
             book_id = kwargs.get('book_id'),
             created_at = kwargs.get('created_at'),
-            devolution_date = kwargs.get('devolution_date')
+            devolution_date = kwargs.get('devolution_date'),
+            value = kwargs.get('value')
         )
         db.session.add(new_lending)
         db.session.commit()
