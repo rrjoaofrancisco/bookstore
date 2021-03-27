@@ -1,13 +1,13 @@
 import os
 from datetime import datetime, timedelta
-from flask import request, abort
+from flask import abort
 from restplus import api
 from flask_restplus import Resource
 from services.lending import LendingService
 from services.book import BookService
-from serializers.lending import lendings_schema, lending_schema
+from services.client import ClientService
+from serializers.lending import lending_schema
 
-loan_days = os.environ.get('LOAN_DAYS')
 
 ns_client = api.namespace('Clients & Lendings', description='Clients management and book lendings', path='/clients')
 
@@ -19,6 +19,7 @@ class Lending(Resource):
         super(Lending, self).__init__(api, args, kwargs)
         self.service = LendingService()
         self.book_service = BookService()
+        self.client_service = ClientService()
 
     def _apply_fees(self, loan_json, today, dt_devolution, value):
         fine = 0.0
@@ -44,6 +45,9 @@ class Lending(Resource):
         loan_json['current_value'] = current_value
 
     def get(self, id):
+        client = self.client_service.get_by_id(id)
+        if not client:
+            abort(404, 'Client not found.')
         lendings = self.service.get_by_client(id)
         today = datetime.today()
         response = []

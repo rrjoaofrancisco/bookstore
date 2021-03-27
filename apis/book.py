@@ -76,4 +76,4 @@ class BookReserve(Resource):
             self.book_service.insert(book)
 
             return lending_schema.dump(new_loading), 201
-        abort(400, 'Book or Client not found.')
+        abort(404, 'Book or Client not found.')

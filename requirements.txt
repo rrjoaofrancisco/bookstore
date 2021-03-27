@@ -4,7 +4,11 @@ Flask-SQLAlchemy
 flask-migrate
 flask-marshmallow
 marshmallow-sqlalchemy
-pytest
 flake8
 python-dotenv
 Werkzeug==0.16.1
+requests
+pytest
+pytest-flask
+requests-mock
+pytest-mock
