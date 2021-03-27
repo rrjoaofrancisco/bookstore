@@ -13,5 +13,5 @@ class LendingSchema(ma.Schema):
         )
 
 
-lending_schema = LendingSchema()
+loan_schema = LendingSchema()
 lendings_schema = LendingSchema(many=True)

@@ -1,11 +1,11 @@
 from database import db
-from models.lending import Lending
+from models.loan import Loan
 
 
-class LendingService(object):
+class LoanService(object):
 
     def insert(self, **kwargs):
-        new_lending = Lending(
+        new_lending = Loan(
             client_id=kwargs.get('client_id'),
             book_id=kwargs.get('book_id'),
             created_at=kwargs.get('created_at'),
@@ -17,7 +17,7 @@ class LendingService(object):
         return new_lending
 
     def get_by_client(self, _client_id):
-        return Lending.query.filter_by(client_id=_client_id)
+        return Loan.query.filter_by(client_id=_client_id)
 
     def get_by_book(self, _book_id):
-        return Lending.query.filter_by(book_id=_book_id).first()
+        return Loan.query.filter_by(book_id=_book_id).first()

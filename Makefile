@@ -19,7 +19,7 @@ code-convention:
 	flake8 --max-line-length=120 --ignore=E402,F401
 
 test:
-	$(PYTEST)
+	$(PYTEST) --cov-report=term-missing  --cov-report=html --cov=.
 
 run:
 	chmod +x run.sh

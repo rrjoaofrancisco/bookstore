@@ -2,21 +2,21 @@ from datetime import datetime, timedelta
 from flask import abort
 from restplus import api
 from flask_restplus import Resource
-from services.lending import LendingService
+from services.loan import LoanService
 from services.book import BookService
 from services.client import ClientService
-from serializers.lending import lending_schema
+from serializers.loan import loan_schema
 
 
-ns_client = api.namespace('Clients & Lendings', description='Clients management and book lendings', path='/clients')
+ns_client = api.namespace('Clients & Loans', description='Clients management and book loans', path='/clients')
 
 
 @ns_client.route('/<id>/books')
-class Lending(Resource):
+class Loan(Resource):
 
     def __init__(self, api=None, *args, **kwargs):
-        super(Lending, self).__init__(api, args, kwargs)
-        self.service = LendingService()
+        super(Loan, self).__init__(api, args, kwargs)
+        self.service = LoanService()
         self.book_service = BookService()
         self.client_service = ClientService()
 
@@ -50,11 +50,11 @@ class Lending(Resource):
     def get(self, id):
         client = self.client_service.get_by_id(id)
         if not client:
-            abort(404, 'Client not found.')
-        lendings = self.service.get_by_client(id)
+            abort(404, 'Client not found')
+        loans = self.service.get_by_client(id)
         response = []
-        for loan in lendings:
-            loan_json = lending_schema.dump(loan)
+        for loan in loans:
+            loan_json = loan_schema.dump(loan)
             self._apply_fees(loan_json, loan.devolution_date, loan.value)
             response.append(loan_json)
         return response

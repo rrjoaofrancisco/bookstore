@@ -1,8 +1,8 @@
 from database import db
 
 
-class Lending(db.Model):
-    __tablename__ = 'lending_books'
+class Loan(db.Model):
+    __tablename__ = 'loan'
     id = db.Column(db.Integer, primary_key=True)
     value = db.Column(db.Float, nullable=False)
     created_at = db.Column(db.DateTime, nullable=False)

@@ -3,7 +3,7 @@ import pytest
 import app as global_app
 from models.book import Book
 from models.client import Client
-from models.lending import Lending
+from models.loan import Loan
 from datetime import datetime
 from database import db
 
@@ -24,16 +24,16 @@ def app():
         db.session.add(Client(name='Cliente 1'))
         db.session.add(Client(name='Cliente 2'))
         db.session.add(Client(name='Cliente 3'))
-        db.session.add(Lending(client_id=1,
-                               book_id=3,
-                               created_at=datetime(2021, 3, 20),
-                               devolution_date=datetime(2021, 3, 23),
-                               value=10.0))
-        db.session.add(Lending(client_id=3,
-                               book_id=2,
-                               created_at=datetime(2021, 3, 27),
-                               devolution_date=datetime(2021, 3, 30),
-                               value=18.0))
+        db.session.add(Loan(client_id=1,
+                            book_id=3,
+                            created_at=datetime(2021, 3, 20),
+                            devolution_date=datetime(2021, 3, 23),
+                            value=10.0))
+        db.session.add(Loan(client_id=3,
+                            book_id=2,
+                            created_at=datetime(2021, 3, 27),
+                            devolution_date=datetime(2021, 3, 30),
+                            value=18.0))
 
         db.session.commit()
     return global_app.app
