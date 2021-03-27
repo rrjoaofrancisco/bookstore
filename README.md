@@ -5,9 +5,9 @@ This is a service that can help you to manage your book reserves.
 ## Requirements
 - Ubuntu 18.04
 - Python 3.6.12
+- sqlite3
 - pyenv
 - make
-- git
 
 This project uses `Makefile` as automation tool.
 
@@ -41,3 +41,10 @@ export PYTHONPATH=.
 ```
 - For code-convention, execute `make code-convention`.
 - For tests, execute `make test`.
+
+## DB pre-load
+
+For populate your database with books and clients, please run: 
+```bash
+sqlite3 bookstore.db < db-init-load.sql
+```
