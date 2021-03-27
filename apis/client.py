@@ -21,7 +21,7 @@ class Lending(Resource):
         self.book_service = BookService()
         self.client_service = ClientService()
 
-    def _get_today():
+    def _get_today(self):
         return datetime.today()
 
     def _apply_fees(self, loan_json, dt_devolution, value):

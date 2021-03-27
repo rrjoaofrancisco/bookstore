@@ -50,6 +50,9 @@ class BookReserve(Resource):
         self.book_service = BookService()
         self.client_service = ClientService()
 
+    def _reserve_days(self, days=3):
+        return days if not reserve_days else reserve_days
+
     @ns_book.expect(lending)
     def post(self, id):
         json_data = request.get_json()
@@ -63,8 +66,7 @@ class BookReserve(Resource):
 
         if book and client:
             reserve_date = _valid_date(json_data['reserve_date'])
-
-            devolution_date = reserve_date + timedelta(int(reserve_days))
+            devolution_date = reserve_date + timedelta(self._reserve_days())
 
             new_loading = self.service.insert(client_id=client.id, 
                                             book_id=book.id, 

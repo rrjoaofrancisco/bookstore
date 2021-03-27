@@ -23,3 +23,7 @@ test:
 
 db-upgrade:
 	flask db upgrade
+
+run:
+	chmod +x run.sh
+	./run.sh
