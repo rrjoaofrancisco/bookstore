@@ -11,6 +11,13 @@ This is a service that can help you to manage your book reserves.
 
 This project uses `Makefile` as automation tool.
 
+### System requirements:
+
+The common libraries you may need for this build to work properly:
+```bash
+sudo apt-get install -y make build-essential libssl1.0-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl git sqlite3
+```
+See `https://github.com/pyenv/pyenv/wiki/Common-build-problems` for other platforms and more information.
 
 ## Set-up Virtual Environment
 
@@ -43,6 +50,11 @@ For run and access the swagger, execute `make run`. This will start the server o
 First export the following env:
 ```bash
 export PYTHONPATH=.
+```
+... or if you prefer:
+```bash
+echo 'export PYTHONPATH=.' >> ~/.bashrc
+source ~/.bashrc
 ```
 - For code-convention, execute `make code-convention`.
 - For tests, execute `make test`.

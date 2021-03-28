@@ -9,7 +9,7 @@ setup:
 	pip install -r requirements.txt
 
 install-python:
-	pyenv install $(PYTHON_VERSION)
+	pyenv install $(PYTHON_VERSION) -v
 
 .create-venv:
 	pyenv uninstall -f $(VENV_NAME)

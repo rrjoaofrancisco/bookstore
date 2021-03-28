@@ -47,6 +47,7 @@ class Loan(Resource):
         loan_json['fee'] = fee
         loan_json['current_value'] = current_value
 
+    @ns_client.doc(responses={404: 'Not Found', 200: 'Success'})
     def get(self, id):
         client = self.client_service.get_by_id(id)
         if not client:

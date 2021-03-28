@@ -54,7 +54,7 @@ class BookReserve(Resource):
     def _reserve_days(self, days=3):
         return days if not reserve_days else int(reserve_days)
 
-    @ns_book.doc(responses={400: 'Invalid request', 201: 'Success', 404: 'Not found'})
+    @ns_book.doc(responses={400: 'Invalid request', 201: 'Created', 404: 'Not found'})
     @ns_book.expect(loan)
     def post(self, id):
         json_data = request.get_json()
