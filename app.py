@@ -8,6 +8,7 @@ from restplus import api
 from sqlalchemy.orm.exc import NoResultFound
 from apis.book import ns_book
 from apis.client import ns_client
+from flask_cors import CORS
 
 
 logger = logging.getLogger(__name__)
@@ -15,7 +16,17 @@ handler = logging.StreamHandler(stream=sys.stdout)
 logger.addHandler(handler)
 logger.setLevel(logging.INFO)
 
+authorizations = {
+    'oauth2': {
+        'type': 'oauth2',
+        'flow': 'password',
+        'tokenUrl': 'http://127.0.0.1:8080/auth/realms/bookstore/protocol/openid-connect/token',
+        'authorizationUrl': 'http://127.0.0.1:8080/auth/realms/bookstore/protocol/openid-connect/auth',
+    }
+}
+
 app = Flask(__name__)
+cors = CORS(app, resources={r"*": {"origins": "*"}})
 
 
 def create_app(app=app, db_url=os.environ.get('DATABASE_DEFAULT_URL')):
@@ -26,6 +37,8 @@ def create_app(app=app, db_url=os.environ.get('DATABASE_DEFAULT_URL')):
 
     blueprint = Blueprint('api', __name__)
     api.init_app(blueprint)
+    api.security = 'oauth2'
+    api.authorizations = authorizations
     api.add_namespace(ns_book)
     api.add_namespace(ns_client)
     app.register_blueprint(blueprint)
